@@ -33,39 +33,14 @@ let getJohnOrders = () => {
 };
 
 // Start coding here
-let newGetJohnProfile = async () => {
-  let data = await new Promise(function (resolve) {
-    setTimeout(
-      () =>
-        resolve({
-          name: "John",
-          age: 20,
-          hobbies: ["Coding", "Football"],
-        }),
-      1000
-    );
-  });
-  console.log(data) 
+let fetchData = async () => {
+  try {
+    const profile = await getJohnProfile();
+    console.log(profile);
+    const orders = await getJohnOrders();
+    console.log(orders);
+  } catch (error) {
+    console.log(error);
+  }
 };
-
-let newGetJohnOrders = async () => {
-  let data = await new Promise(function (resolve) {
-    setTimeout(
-      () =>
-        resolve([
-          {
-            orderId: "001",
-            items: ["apple", "banana"],
-          },
-          {
-            orderId: "002",
-            items: ["orange", "itim"],
-          },
-        ]),
-      1500
-    );
-  });  
-  console.log(data) 
-};
-
-newGetJohnProfile().then(newGetJohnOrders)
+fetchData();
